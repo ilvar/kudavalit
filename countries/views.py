@@ -2,7 +2,7 @@
 import re
 import decimal
 from django.shortcuts import redirect
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, DetailView
 
 from countries.models import Country
 
@@ -12,6 +12,13 @@ class IndexView(ListView):
     template_name = 'index.html'
 
 index = IndexView.as_view()
+
+
+class CountryView(DetailView):
+    model = Country
+    template_name = 'country.html'
+
+country = CountryView.as_view()
 
 
 class HelpView(TemplateView):

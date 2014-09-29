@@ -30,7 +30,7 @@ class Country(models.Model):
 class Blog(models.Model):
     country = models.ForeignKey(Country)
     url = models.URLField(u'URL')
-    name = models.CharField(u'Имя', max_length=255)
+    name = models.CharField(u'Имя', max_length=255, null=True, blank=True)
 
     def __unicode__(self):
         return self.name

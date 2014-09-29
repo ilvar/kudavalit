@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ country.name }}</h1>
+
+    <dl>
+        {% if country.business %}
+            <dt>Бизнес-виза</dt>
+            <dd>{{ country.business }}</dd>
+        {% endif %}
+        {% if country.investor %}
+            <dt>Виза инвестора</dt>
+            <dd>{{ country.investor }}</dd>
+        {% endif %}
+        {% if country.pension %}
+            <dt>Виза для рантье/пенсионеров</dt>
+            <dd>{{ country.pension }}</dd>
+        {% endif %}
+        {% if country.visa_run %}
+            <dt>Visa-run с туристической визой</dt>
+            <dd>{{ country.visa_run }}</dd>
+        {% endif %}
+        {% if country.specialist %}
+            <dt>Виза для специалистов</dt>
+            <dd>{{ country.specialist }}</dd>
+        {% endif %}
+
+        {% if country.happiness %}
+            <dt>Индекс счастья</dt>
+            <dd>{{ country.happiness }}</dd>
+        {% endif %}
+        {% if country.prosperity %}
+            <dt>Prosperity index</dt>
+            <dd>{{ country.prosperity }}</dd>
+        {% endif %}
+        {% if country.medicine %}
+            <dt>WHO rank</dt>
+            <dd>{{ country.medicine }}</dd>
+        {% endif %}
+        {% if country.summer %}
+            <dt>Температура летом</dt>
+            <dd>{{ country.summer }}</dd>
+        {% endif %}
+        {% if country.winter %}
+            <dt>Температура зимой</dt>
+            <dd>{{ country.winter }}</dd>
+        {% endif %}
+        {% if country.mountains %}
+            <dt>Горы</dt>
+            <dd>
+                {% if country.mountains %}
+                    <span class="text-success glyphicon glyphicon-ok"></span>
+                {% else %}
+                    <span class="text-danger glyphicon glyphicon-remove"></span>
+                {% endif %}
+            </dd>
+        {% endif %}
+        {% if country.sea %}
+            <dt>Море</dt>
+            <dd>
+                {% if country.sea %}
+                    <span class="text-success glyphicon glyphicon-ok"></span>
+                {% else %}
+                    <span class="text-danger glyphicon glyphicon-remove"></span>
+                {% endif %}
+            </dd>
+        {% endif %}
+        {% if country.rent %}
+            <dt>Аренда</dt>
+            <dd>{{ country.rent }}</dd>
+        {% endif %}
+        {% if country.language %}
+            <dt>Язык</dt>
+            <dd>{{ country.language }}</dd>
+        {% endif %}
+        {% if country.additional %}
+            <dt>Прочее</dt>
+            <dd>{{ country.additional }}</dd>
+        {% endif %}
+    </dl>
+
+    {% if country.blog_set.all %}
+        <ul>
+            {% for b in country.blog_set.all %}
+                <li><a href="{{ b.url }}">{{ b.name|default:b.url }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

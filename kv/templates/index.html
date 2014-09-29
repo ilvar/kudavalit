@@ -30,7 +30,7 @@
         <tbody>
             {% for c in country_list %}
                 <tr>
-                    <td>{{ c.name }}</td>
+                    <td><a href="{% url 'country' c.pk %}">{{ c.name }}</a></td>
                     <td class="text-center">
                         {% if c.business %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
                     </td>
