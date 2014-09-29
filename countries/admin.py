@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from countries.models import Country, Blog
+
+
+class BlogInline(admin.TabularInline):
+    model = Blog
+
+
+class CountryAdmin(admin.ModelAdmin):
+    inlines = [BlogInline]
+
+admin.site.register(Country, CountryAdmin)

@@ -18,8 +18,8 @@
                 <th>Рантье</th>
                 <th>Visa-run</th>
                 <th>Специалист</th>
-                <th>Индекс счастья</th>
-                <th>Prosperity Index</th>
+                <th>Счастья</th>
+                <th>Prosperity</th>
                 <th>WHO rank</th>
                 <th>Летом</th>
                 <th>Зимой</th>
@@ -31,17 +31,32 @@
             {% for c in country_list %}
                 <tr>
                     <td>{{ c.name }}</td>
-                    <td>{{ c.business|yesno }}</td>
-                    <td>{{ c.investor|yesno }}</td>
-                    <td>{{ c.pension|yesno }}</td>
-                    <td>{{ c.visa_run|yesno }}</td>
-                    <td>{{ c.specialist|yesno }}</td>
-                    <td>{{ c.happiness|default:"" }}</td>
-                    <td>{{ c.prosperity|default:"" }}</td>
-                    <td>{{ c.medicine|default:"" }}</td>
-                    <td>{{ c.summer|default:"" }}</td>
-                    <td>{{ c.winter|default:"" }}</td>
-                    <td>{{ c.sea|yesno }}</td>
+                    <td class="text-center">
+                        {% if c.business %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if c.investor %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if c.pension %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if c.visa_run %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if c.specialist %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
+                    </td>
+                    <td class="text-center">{{ c.happiness|default:"" }}</td>
+                    <td class="text-center">{{ c.prosperity|default:"" }}</td>
+                    <td class="text-center">{{ c.medicine|default:"" }}</td>
+                    <td class="text-center">{{ c.summer|default:"" }}</td>
+                    <td class="text-center">{{ c.winter|default:"" }}</td>
+                    <td class="text-center">
+                        {% if c.mountains %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if c.sea  %}<span class="text-success glyphicon glyphicon-ok"></span>{% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

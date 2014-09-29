@@ -1,22 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Частые вопросы</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputFile">XLSX</label>
+            <input type="file" id="exampleInputFile" name="xls">
 
-    <h2>Как пользоваться сайтом?</h2>
-
-    <p>
-        В списке стран отображаются самые важные параметры, по клику на страну можно увидеть более подробные сведения.
-        Также на странице страны можно оставить комментарий, если вы хотите дополнить или изменить данные.
-    </p>
-
-    <h2>Откуда вы берете данные?</h2>
-
-    <p>
-        Из собственного опыта и <a href="https://docs.google.com/spreadsheets/d/1TLQNJBSFBRcjHuwWuO34vfgWtv1-XqvOjM2qHDzk9nc/edit#gid=0">специальной таблички</a>.
-        Если вам есть что добавить - пишите в комментариях на странице страны или, если вопрос или предложение касается
-        работы сайта в целом, прямо здесь.
-    </p>
+            <p class="help-block">Excel файл из <a href="https://docs.google.com/spreadsheets/d/1TLQNJBSFBRcjHuwWuO34vfgWtv1-XqvOjM2qHDzk9nc/edit#gid=0">специальной таблички</a>.</p>
+        </div>
+        <button type="submit" class="btn btn-default">Загрузить</button>
+    </form>
 {% endblock content %}
 
 {% block js %}

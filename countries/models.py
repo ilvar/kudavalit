@@ -19,12 +19,19 @@ class Country(models.Model):
     winter = models.PositiveSmallIntegerField(u'Средняя температура зимой', null=True, blank=True)
     mountains = models.NullBooleanField(u'Горы', blank=True, null=True)
     sea = models.NullBooleanField(u'Море', blank=True, null=True)
-    rent = models.PositiveSmallIntegerField(u'Аренда', help_text=u'Дом или квартира среднего уровня')
+    rent = models.PositiveSmallIntegerField(u'Аренда', help_text=u'Дом или квартира среднего уровня', blank=True, null=True)
     language = models.TextField(u'Язык', null=True, blank=True)
     additional = models.TextField(u'Дополнительные плюшки', null=True, blank=True)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Blog(models.Model):
     country = models.ForeignKey(Country)
     url = models.URLField(u'URL')
     name = models.CharField(u'Имя', max_length=255)
+
+    def __unicode__(self):
+        return self.name
+
