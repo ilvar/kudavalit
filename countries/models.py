@@ -5,7 +5,7 @@ from django.db import models
 class Country(models.Model):
     RATING_HELP = u'место в рейтинге, чем меньше, тем лучше'
 
-    name = models.CharField(u'Страна', max_length=255)
+    name = models.CharField(u'Страна', max_length=255, db_index=True)
     business = models.TextField(u'Бизнес иммиграция', null=True, blank=True)
     investor = models.TextField(u'ПМЖ для инвесторов', null=True, blank=True)
     pension = models.TextField(u'Рантье', null=True, blank=True)
@@ -25,6 +25,9 @@ class Country(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']
 
 
 class Blog(models.Model):
