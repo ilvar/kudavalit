@@ -67,7 +67,7 @@ class UploadView(TemplateView):
                 if isinstance(s, decimal.Decimal):
                     return s
 
-                numbers = re.match('^(\d+)', s)
+                numbers = re.match('^(\-?\d+)', s)
                 if numbers:
                     return numbers.groups()[0]
                 else:
