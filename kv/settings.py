@@ -19,10 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4x=+*z4i9^uo^7&frshwklabz@m3!rm9_u%w8@a_mj_o8d1r!5'
+SECRET_KEY = os.environ.get('SECRET_KEY') or '4x=+*z4i9^uo^7&frshwklabz@m3!rm9_u%w8@a_mj_o8d1r!5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -87,3 +87,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+try:
+    from localsettings import *
+except ImportError:
+    pass
