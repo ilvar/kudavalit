@@ -95,6 +95,11 @@ except ImportError:
     pass
 
 if not DEBUG:
+    BUGSNAG = {
+        "api_key": os.environ.get('BUGSNAG_KEY'),
+        "project_root": "/app/",
+    }
+
     MIDDLEWARE_CLASSES += (
         'bugsnag.django.middleware.BugsnagMiddleware',
     )
