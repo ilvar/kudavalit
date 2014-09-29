@@ -93,3 +93,8 @@ try:
     from localsettings import *
 except ImportError:
     pass
+
+if not DEBUG:
+    MIDDLEWARE_CLASSES += (
+        'bugsnag.django.middleware.BugsnagMiddleware',
+    )
