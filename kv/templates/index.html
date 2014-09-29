@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Страны для иммиграции</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th rowspan="2">Страна</th>
+                <th colspan="5">Типы виз</th>
+                <th colspan="3">Индексы <small>(меньше - лучше)</small></th>
+                <th colspan="2">Температура</th>
+                <th colspan="2">Природа</th>
+            </tr>
+            <tr>
+                <th>Бизнес</th>
+                <th>Инвестиции</th>
+                <th>Рантье</th>
+                <th>Visa-run</th>
+                <th>Специалист</th>
+                <th>Индекс счастья</th>
+                <th>Prosperity Index</th>
+                <th>WHO rank</th>
+                <th>Летом</th>
+                <th>Зимой</th>
+                <th>Горы</th>
+                <th>Море</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in country_list %}
+                <tr>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.business|yesno }}</td>
+                    <td>{{ c.investor|yesno }}</td>
+                    <td>{{ c.pension|yesno }}</td>
+                    <td>{{ c.visa_run|yesno }}</td>
+                    <td>{{ c.specialist|yesno }}</td>
+                    <td>{{ c.happiness|default:"" }}</td>
+                    <td>{{ c.prosperity|default:"" }}</td>
+                    <td>{{ c.medicine|default:"" }}</td>
+                    <td>{{ c.summer|default:"" }}</td>
+                    <td>{{ c.winter|default:"" }}</td>
+                    <td>{{ c.sea|yesno }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}
