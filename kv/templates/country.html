@@ -25,6 +25,22 @@
             <dd>{{ country.specialist }}</dd>
         {% endif %}
 
+        {% if country.visa_free_default %}
+            <dt>Безвизовый въезд на</dt>
+            <dd>{{ country.visa_free_default }} дней</dd>
+        {% endif %}
+        {% if country.visa_free_max %}
+            <dt>Максимальный срок проживания без визы</dt>
+            <dd>{{ country.visa_free_max }}</dd>
+        {% endif %}
+        {% if country.residence_min %}
+            <dt>Самый дешевый ПМЖ</dt>
+            <dd>
+                {{ country.residence_min }}
+                {% if country.residence_min_description %}<p>{{ residence_min_description }}</p>{% endif %}
+            </dd>
+        {% endif %}
+
         {% if country.happiness %}
             <dt>Индекс счастья</dt>
             <dd>{{ country.happiness }}</dd>
@@ -69,10 +85,38 @@
             <dt>Аренда</dt>
             <dd>{{ country.rent }}</dd>
         {% endif %}
+        {% if country.numbeo_link %}
+            <dt>Средние цены</dt>
+            <dd><a href="{{ country.numbeo_link }}">{{ country.numbeo_link }}</a></dd>
+        {% endif %}
+
+        {% if country.flight_time %}
+            <dt>Время перелета из Москвы</dt>
+            <dd>{{ country.flight_time }}</dd>
+        {% endif %}
+        {% if country.flight_price %}
+            <dt>Стоимость перелета</dt>
+            <dd>{{ country.flight_price }}</dd>
+        {% endif %}
+        {% if country.time_zone %}
+            <dt>Разница с Москвой</dt>
+            <dd>{{ country.time_shift }}</dd>
+        {% endif %}
+
+
         {% if country.language %}
             <dt>Язык</dt>
             <dd>{{ country.language }}</dd>
         {% endif %}
+        {% if country.language_english %}
+            <dt>Понимают английский</dt>
+            <dd><span class="text-success glyphicon glyphicon-ok"></span></dd>
+        {% endif %}
+        {% if country.language_russian %}
+            <dt>Понимают русский</dt>
+            <dd><span class="text-success glyphicon glyphicon-ok"></span></dd>
+        {% endif %}
+
         {% if country.additional %}
             <dt>Прочее</dt>
             <dd>{{ country.additional }}</dd>

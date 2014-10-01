@@ -9,6 +9,7 @@ urlpatterns = patterns('countries.views',
     url(r'^help/$', 'help_page', name='help'),
     url(r'^add/$', 'add_page', name='add'),
     url(r'^upload/$', 'upload', name='upload'),
+    url(r'^update_prices/$', 'update_prices', name='update_prices'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -1,8 +1,11 @@
 # coding=utf-8
+import os
 import re
 import decimal
+from django.contrib import messages
 from django.shortcuts import redirect
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import ListView, TemplateView, DetailView, View
+import requests
 
 from countries.models import Country
 
@@ -100,3 +103,26 @@ class UploadView(TemplateView):
         return redirect('index')
 
 upload = UploadView.as_view()
+
+
+class UpdatePricesView(View):
+    def get(self, request, *args, **kwargs):
+        token = os.environ.get('AVIASALES_TOKEN') or request.GET.get('token')
+        if not token:
+            messages.error(request, 'Incorrect token', extra_tags='danger')
+            return redirect('index')
+
+        headers = {"X-Access-Token": token}
+        url = "http://api.travelpayouts.com/v1/prices/cheap?currency=USD&origin=MOW&destination=%s"
+
+        for c in Country.objects.exclude(capital_iata__isnull=True):
+            r = requests.get(url % c.capital_iata, headers=headers).json()
+            tickets = r.get('data', {}).get(c.capital_iata, [])
+            if tickets:
+                c.flight_price = min([t['price'] for t in tickets])
+                c.save()
+
+        messages.success(request, 'Data updated')
+        return redirect('index')
+
+update_prices = UpdatePricesView.as_view()
