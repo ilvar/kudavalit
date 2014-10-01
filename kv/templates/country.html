@@ -36,7 +36,7 @@
         {% if country.residence_min %}
             <dt>Самый дешевый ПМЖ</dt>
             <dd>
-                {{ country.residence_min }}
+                ${{ country.residence_min }}
                 {% if country.residence_min_description %}<p>{{ residence_min_description }}</p>{% endif %}
             </dd>
         {% endif %}
@@ -83,7 +83,7 @@
         {% endif %}
         {% if country.rent %}
             <dt>Аренда</dt>
-            <dd>{{ country.rent }}</dd>
+            <dd>${{ country.rent }}</dd>
         {% endif %}
         {% if country.numbeo_link %}
             <dt>Средние цены</dt>
@@ -96,7 +96,7 @@
         {% endif %}
         {% if country.flight_price %}
             <dt>Стоимость перелета</dt>
-            <dd>{{ country.flight_price }}</dd>
+            <dd>${{ country.flight_price }}</dd>
         {% endif %}
         {% if country.time_zone %}
             <dt>Разница с Москвой</dt>
