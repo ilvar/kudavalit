@@ -123,7 +123,19 @@
         {% endif %}
     </dl>
 
+    {% if country.link_set.all %}
+        <h2>Ссылки</h2>
+
+        <ul>
+            {% for b in country.link_set.all %}
+                <li><a href="{{ b.url }}">{{ b.name|default:b.url }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     {% if country.blog_set.all %}
+        <h2>Блоги</h2>
+
         <ul>
             {% for b in country.blog_set.all %}
                 <li><a href="{{ b.url }}">{{ b.name|default:b.url }}</a></li>

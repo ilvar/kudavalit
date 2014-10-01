@@ -55,6 +55,10 @@ class Country(models.Model):
         else:
             return
 
+    @models.permalink
+    def get_absolute_url(self):
+        return 'country', [self.pk]
+
     def __unicode__(self):
         return self.name
 
