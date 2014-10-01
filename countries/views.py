@@ -117,7 +117,7 @@ class UpdatePricesView(View):
 
         for c in Country.objects.exclude(capital_iata__isnull=True):
             r = requests.get(url % c.capital_iata, headers=headers).json()
-            tickets = r.get('data', {}).get(c.capital_iata, [])
+            tickets = r.get('data', {}).get(c.capital_iata, {}).values()
             if tickets:
                 c.flight_price = min([t['price'] for t in tickets])
                 c.save()
