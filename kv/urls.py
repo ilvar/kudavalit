@@ -10,8 +10,9 @@ urlpatterns = patterns('countries.views',
     url(r'^add/$', 'add_page', name='add'),
     url(r'^upload/$', 'upload', name='upload'),
     url(r'^update_prices/$', 'update_prices', name='update_prices'),
-
-    url(r'^admin/', include(admin.site.urls)),
 )
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += patterns('',
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+)
